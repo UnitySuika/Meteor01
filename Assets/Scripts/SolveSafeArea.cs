@@ -16,9 +16,6 @@ public class SolveSafeArea : MonoBehaviour
 		var panel = GetComponent<RectTransform>();
 		var area = Screen.safeArea;
 
-		Debug.Log(area);
-		Debug.Log(Screen.height);
-
 		var anchorMin = area.position;
 		var anchorMax = area.position + area.size;
 
