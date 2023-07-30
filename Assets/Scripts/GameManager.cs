@@ -4,30 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Meteor meteorPrefab;
-    [SerializeField] float meteorSpawnY = 44f;
-    [SerializeField] float meteorSpawnInterval;
+    [SerializeField] Ground ground;
 
-    float meteorSpawnTimer;
+    [SerializeField] GameObject gameOverCanvas;
 
-    private void Start()
-    {
-        SpawnMeteor();
-    }
+    bool IsGameOver => ground.Life == 0;
 
     private void Update()
     {
-        meteorSpawnTimer += Time.deltaTime;
-        if (meteorSpawnTimer > meteorSpawnInterval)
+        if (IsGameOver)
         {
-            meteorSpawnTimer = 0;
-            SpawnMeteor();
+            gameOverCanvas.SetActive(true);
         }
-    }
-
-    void SpawnMeteor()
-    {
-        Vector2 spawnPos = new Vector2(Random.Range(-23.5f, 23.5f), meteorSpawnY);
-        Meteor meteor = Instantiate(meteorPrefab, spawnPos, Quaternion.identity);
     }
 }

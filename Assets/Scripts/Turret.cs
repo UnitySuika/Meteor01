@@ -38,20 +38,23 @@ public class Turret : MonoBehaviour
         float rot = Mathf.Deg2Rad * (gun.transform.eulerAngles.z + 90f); // + 90f は補正
         Vector3 dir = new Vector3(Mathf.Cos(rot), Mathf.Sin(rot), 0);
 
-        // 光線を飛ばして当たった隕石を消す
         Vector3 gunTip = gun.transform.Find("TipPoint").position;
         Vector3 target = gunTip + dir * beamLength;
-        RaycastHit2D hit = Physics2D.Linecast(gunTip, target);
-        if (hit && hit.collider.gameObject.TryGetComponent(out Meteor meteor))
-        {
-            Destroy(meteor.gameObject);
-        }
 
         // ビーム生成
         GameObject beam = Instantiate(beamPrefab);
         beam.transform.position = (target + gunTip) / 2f;
         beam.transform.eulerAngles = gun.transform.eulerAngles;
         beam.transform.localScale = new Vector3(beamMaxThick, beamLength, 0);
+
+
+        // ビームに当たった隕石を消す
+        RaycastHit2D hit = Physics2D.BoxCast(beam.transform.position, beam.transform.localScale, beam.transform.eulerAngles.z, Vector2.zero);
+        if (hit && hit.collider.gameObject.TryGetComponent(out Meteor meteor))
+        {
+            Destroy(meteor.gameObject);
+        }
+
         StartCoroutine(BeamFadeOut(beam));
     }
 

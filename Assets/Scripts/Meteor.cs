@@ -13,11 +13,18 @@ public class Meteor : MonoBehaviour
 
     float currentTime;
 
+    Ground ground;
+
     private void Start()
     {
         startPos = transform.position;
         Vector3 destination = new Vector2(Random.Range(-23.5f, 23.5f), meteorTargetY);
         dirVector = (destination - startPos).normalized;
+    }
+
+    public void Init(Ground ground)
+    {
+        this.ground = ground;
     }
 
     private void Update()
@@ -27,6 +34,7 @@ public class Meteor : MonoBehaviour
         transform.position = startPos + v * currentTime;
         if (transform.position.y < meteorTargetY)
         {
+            ground.Damage(1);
             Destroy(gameObject);
         }
     }
