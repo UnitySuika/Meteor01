@@ -67,6 +67,11 @@ public class Turret : MonoBehaviour
             scale.x = Mathf.Lerp(beamMaxThick, 0, time / beamFadeTime);
             beam.transform.localScale = scale;
 
+            SpriteRenderer renderer = beam.GetComponent<SpriteRenderer>();
+            Color color = renderer.color;
+            color.a = Mathf.Lerp(1, 0, time / beamFadeTime);
+            renderer.color = color;
+
             yield return null;
         }
 
