@@ -1103,7 +1103,7 @@ MonoBehaviour:
   gun: {fileID: 1923545774}
   beamPrefab: {fileID: 4959193384588900539, guid: 7e898420e03d7b7428353b43f298934f, type: 3}
   beamMaxThick: 2
-  beamFadeTime: 0.3
+  beamFadeTime: 0.2
 --- !u!4 &1241526295
 Transform:
   m_ObjectHideFlags: 0
@@ -1134,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderHalfLength: 0.25
+  returnTime: 0.2
 --- !u!1 &1267408901
 GameObject:
   m_ObjectHideFlags: 0
