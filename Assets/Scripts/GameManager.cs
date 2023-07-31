@@ -5,16 +5,46 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Ground ground;
+    [SerializeField] MeteorSpawner meteorSpawner;
+    [SerializeField] Turret turret;
 
     [SerializeField] GameObject gameOverCanvas;
+    [SerializeField] GameObject clearCanvas;
 
     bool IsGameOver => ground.Life == 0;
+    bool IsClear => meteorSpawner.GetProgress() == 1;
+    bool isGameEnd = false;
+
+    public int Score { get; private set; }
+
+    private void Start()
+    {
+        turret.HitMeteor += (meteor) => Score += meteor.Score;
+    }
 
     private void Update()
     {
-        if (IsGameOver)
+        if (!isGameEnd)
         {
-            gameOverCanvas.SetActive(true);
+            if (IsGameOver)
+            {
+                isGameEnd = true;
+                gameOverCanvas.SetActive(true);
+            }
+            else if (IsClear)
+            {
+                isGameEnd = true;
+                clearCanvas.SetActive(true);
+            }
         }
+    }
+
+    public void Retry()
+    {
+        isGameEnd = false;
+        gameOverCanvas.SetActive(false);
+        clearCanvas.SetActive(false);
+        ground.Init();
+        meteorSpawner.Init();
     }
 }

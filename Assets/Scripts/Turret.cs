@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Turret : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Turret : MonoBehaviour
     TurretInput turretInput;
 
     const float beamLength = 100f;
+
+    public Action<Meteor> HitMeteor;
 
     private void Start()
     {
@@ -49,10 +52,17 @@ public class Turret : MonoBehaviour
 
 
         // ƒr[ƒ€‚É“–‚½‚Á‚½è¦Î‚ðÁ‚·
-        RaycastHit2D hit = Physics2D.BoxCast(beam.transform.position, beam.transform.localScale, beam.transform.eulerAngles.z, Vector2.zero);
-        if (hit && hit.collider.gameObject.TryGetComponent(out Meteor meteor))
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(beam.transform.position, beam.transform.localScale, beam.transform.eulerAngles.z, Vector2.zero);
+        if (hits.Length > 0)
         {
-            Destroy(meteor.gameObject);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].collider.gameObject.TryGetComponent(out Meteor meteor))
+                {
+                    HitMeteor(meteor);
+                    meteor.Break();
+                }
+            }
         }
 
         StartCoroutine(BeamFadeOut(beam));

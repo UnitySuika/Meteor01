@@ -9,6 +9,11 @@ public class Ground : MonoBehaviour
 
     private void Start()
     {
+        Init();
+    }
+
+    public void Init()
+    {
         Life = maxLife;
     }
 

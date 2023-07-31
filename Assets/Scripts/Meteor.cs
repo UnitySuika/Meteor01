@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,16 +16,21 @@ public class Meteor : MonoBehaviour
 
     Ground ground;
 
+    Action broken;
+
+    public int Score => 10;
+
     private void Start()
     {
         startPos = transform.position;
-        Vector3 destination = new Vector2(Random.Range(-23.5f, 23.5f), meteorTargetY);
+        Vector3 destination = new Vector2(UnityEngine.Random.Range(-23.5f, 23.5f), meteorTargetY);
         dirVector = (destination - startPos).normalized;
     }
 
-    public void Init(Ground ground)
+    public void Init(Ground ground, Action broken)
     {
         this.ground = ground;
+        this.broken = broken;
     }
 
     private void Update()
@@ -35,7 +41,13 @@ public class Meteor : MonoBehaviour
         if (transform.position.y < meteorTargetY)
         {
             ground.Damage(1);
-            Destroy(gameObject);
+            Break();
         }
+    }
+
+    public void Break()
+    {
+        broken();
+        Destroy(gameObject);
     }
 }
