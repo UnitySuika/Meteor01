@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Score = 0;
         turret.HitMeteor += (meteor) => Score += meteor.Score;
     }
 
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         isGameEnd = false;
+        Score = 0;
         gameOverCanvas.SetActive(false);
         clearCanvas.SetActive(false);
         ground.Init();
