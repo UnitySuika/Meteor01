@@ -15,7 +15,6 @@ public class ChangeControl : MonoBehaviour
 
     private void Start()
     {
-        turret.currentInput = 1;
         isButtonInput = false;
         inputButtons.SetActive(false);
         buttonInput.enabled = false;
@@ -26,14 +25,12 @@ public class ChangeControl : MonoBehaviour
             isButtonInput = !isButtonInput;
             if (isButtonInput)
             {
-                turret.currentInput = 0;
                 inputButtons.SetActive(true);
                 buttonInput.enabled = true;
                 dragInput.enabled = false;
             }
             else
             {
-                turret.currentInput = 1;
                 inputButtons.SetActive(false);
                 buttonInput.enabled = false;
                 dragInput.enabled = true;

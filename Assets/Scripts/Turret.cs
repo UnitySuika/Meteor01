@@ -12,8 +12,7 @@ public class Turret : MonoBehaviour
     [SerializeField] float beamMaxThick;
     [SerializeField] float beamFadeTime;
 
-    TurretInput[] turretInputs;
-    public int currentInput;
+    TurretInput turretInput;
 
     const float beamLength = 100f;
 
@@ -21,17 +20,14 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        turretInputs = GetComponents<TurretInput>();
+        turretInput = GetComponent<TurretInput>();
 
-        for (int i = 0; i < turretInputs.Length; i++)
-        {
-            turretInputs[i].Shoot += Shoot;
-        }
+        turretInput.Shoot += Shoot;
     }
 
     private void Update()
     {
-        gun.transform.eulerAngles = new Vector3(0, 0, turretInputs[currentInput].GetAngle());
+        gun.transform.eulerAngles = new Vector3(0, 0, turretInput.GetAngle());
 
         float r = Mathf.Deg2Rad * (gun.transform.eulerAngles.z + 90f);
         Vector3 dir = new Vector3(Mathf.Cos(r), Mathf.Sin(r));
