@@ -766,7 +766,7 @@ GameObject:
   - component: {fileID: 137406973}
   - component: {fileID: 137406976}
   m_Layer: 5
-  m_Name: FireButton
+  m_Name: ShootButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorPrefab: {fileID: 3192372577377717424, guid: c273fb7c7a3ce7d498bd5bdc375cf23d, type: 3}
   meteorSpawnY: 44
-  meteorSpawnInterval: 0.5
+  meteorSpawnInterval: 1
   meteorSpawnCount: 15
   ground: {fileID: 1495694093}
 --- !u!1 &907856300

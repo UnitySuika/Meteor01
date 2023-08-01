@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorPrefab: {fileID: 3192372577377717424, guid: c273fb7c7a3ce7d498bd5bdc375cf23d, type: 3}
   meteorSpawnY: 44
-  meteorSpawnInterval: 0.5
+  meteorSpawnInterval: 1
   meteorSpawnCount: 15
   ground: {fileID: 1495694093}
 --- !u!1 &907856300
@@ -1819,7 +1819,6 @@ MonoBehaviour:
   beamPrefab: {fileID: 4959193384588900539, guid: 7e898420e03d7b7428353b43f298934f, type: 3}
   beamMaxThick: 3
   beamFadeTime: 0.2
-  currentInput: 0
 --- !u!4 &1241526295
 Transform:
   m_ObjectHideFlags: 0
