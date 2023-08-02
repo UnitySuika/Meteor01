@@ -7,7 +7,7 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField] Meteor meteorPrefab;
     [SerializeField] float meteorSpawnY = 44f;
     [SerializeField] float meteorSpawnInterval;
-    [SerializeField] float meteorSpawnCount;
+    [SerializeField] int meteorSpawnCount;
 
     [SerializeField] Ground ground;
     int meteorSpawnCounter;
@@ -18,6 +18,11 @@ public class MeteorSpawner : MonoBehaviour
     public float GetProgress()
     {
         return Mathf.Min(meteorBrokenCounter / meteorSpawnCount, 1);
+    }
+
+    public int GetLaterMeteorCount()
+    {
+        return meteorSpawnCount - meteorSpawnCounter;
     }
 
     private void Start()
