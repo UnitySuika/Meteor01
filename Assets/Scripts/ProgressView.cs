@@ -12,6 +12,6 @@ public class ProgressView : MonoBehaviour
     private void Update()
     {
         int count = meteorSpawner.GetLaterMeteorCount();
-        text.text = $"?? {count}";
+        text.text = $"‚ ‚Æ {count}";
     }
 }
