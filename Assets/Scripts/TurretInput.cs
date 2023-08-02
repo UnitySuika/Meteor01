@@ -7,4 +7,5 @@ public interface TurretInput
 {
     Action Shoot { get; set; }
     float GetAngle();
+    void Init();
 }

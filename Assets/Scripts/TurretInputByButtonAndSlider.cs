@@ -7,22 +7,36 @@ using System;
 public class TurretInputByButtonAndSlider : MonoBehaviour, TurretInput
 {
     [SerializeField] RectTransform canvasRect;
-    [SerializeField] RectTransform slider;
-    [SerializeField] RectTransform sliderHandle;
-    [SerializeField] Button shootButton;
+    [SerializeField] RectTransform elementsRoot;
+    [SerializeField] RectTransform sliderPrefab;
+    [SerializeField] Button shootButtonPrefab;
+    RectTransform slider;
+    RectTransform sliderHandle;
+    Button shootButton;
 
     public Action Shoot { get; set; }
 
     float angle;
 
+    public void Init()
+    {
+        slider = Instantiate(sliderPrefab, elementsRoot);
+        sliderHandle = (RectTransform)slider.Find("Handle");
+        shootButton = Instantiate(shootButtonPrefab, elementsRoot);
+        shootButton.onClick.AddListener(() => Shoot());
+    }
+
+    void Stop()
+    {
+        Debug.Log("Disable");
+        Destroy(slider.gameObject);
+        Destroy(shootButton.gameObject);
+        Debug.Log("Disable");
+    }
+
     public float GetAngle()
     {
         return angle;
-    }
-
-    void Start()
-    {
-        shootButton.onClick.AddListener(() => Shoot());
     }
 
     void Update()

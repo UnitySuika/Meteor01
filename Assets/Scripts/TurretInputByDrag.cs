@@ -25,6 +25,11 @@ public class TurretInputByDrag : MonoBehaviour, TurretInput
         return angle;
     }
 
+    public void Init()
+    {
+
+    }
+
     private void Update()
     {
         if (isDragging)

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd192e1ba18fdbf48b07ccf2abc62481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorTargetY: -39
+  meteorTargetY: -33
   initialSpeed: 20
   acceleration: 1
 --- !u!58 &8586974112723425627

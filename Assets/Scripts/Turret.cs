@@ -20,9 +20,14 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        turretInput = GetComponent<TurretInput>();
+        SetInput(GetComponent<TurretInput>());
+    }
 
+    void SetInput(TurretInput input)
+    {
+        turretInput = input;
         turretInput.Shoot += Shoot;
+        turretInput.Init();
     }
 
     private void Update()

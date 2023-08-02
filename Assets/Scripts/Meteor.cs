@@ -19,6 +19,7 @@ public class Meteor : MonoBehaviour
     Action broken;
 
     public int Score => 10;
+    public int Price => 5;
 
     private void Start()
     {

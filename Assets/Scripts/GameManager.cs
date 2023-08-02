@@ -16,11 +16,13 @@ public class GameManager : MonoBehaviour
     bool isGameEnd = false;
 
     public int Score { get; private set; }
+    public int Money { get; private set; }
 
     private void Start()
     {
         Score = 0;
         turret.HitMeteor += (meteor) => Score += meteor.Score;
+        turret.HitMeteor += (meteor) => Money += meteor.Price;
     }
 
     private void Update()

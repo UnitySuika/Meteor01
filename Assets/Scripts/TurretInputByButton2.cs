@@ -45,6 +45,11 @@ public class TurretInputByButton2 : MonoBehaviour, TurretInput
         shootButton.onClick.AddListener(() => Shoot());
     }
 
+    public void Init()
+    {
+        
+    }
+
     void AddEventToEventTrigger(EventTrigger eventTrigger, EventTriggerType type, UnityAction<BaseEventData> call)
     {
         EventTrigger.Entry entry = new EventTrigger.Entry();
