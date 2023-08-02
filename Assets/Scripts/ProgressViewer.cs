@@ -12,7 +12,7 @@ public class ProgressViewer : MonoBehaviour
     private void Update()
     {
         int count = meteorSpawner.GetLaterMeteorCount();
-        text.text = "‚ ‚Æ" + count;
+        text.text = count;
     }
 }
 
