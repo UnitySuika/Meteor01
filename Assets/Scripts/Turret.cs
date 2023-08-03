@@ -12,6 +12,9 @@ public class Turret : MonoBehaviour
     [SerializeField] float beamMaxThick;
     [SerializeField] float beamFadeTime;
 
+    [SerializeField] TurretInputByDrag turretInputPC;
+    [SerializeField] TurretInputByButtonAndSlider turretInputIPhone;
+
     TurretInput turretInput;
 
     const float beamLength = 100f;
@@ -20,7 +23,16 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        SetInput(GetComponent<TurretInput>());
+        turretInputPC = GetComponent<TurretInputByDrag>();
+        turretInputIPhone = GetComponent<TurretInputByButtonAndSlider>();
+
+#if UNITY_EDITOR
+        SetInput(turretInputPC);
+        turretInputIPhone.enabled = false;
+#elif UNITY_IOS
+        SetInput(turretInputIPhone);
+        turretInputPC.enabled = false;
+#endif
     }
 
     void SetInput(TurretInput input)
