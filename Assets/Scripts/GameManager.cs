@@ -7,12 +7,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] Ground ground;
     [SerializeField] MeteorSpawner meteorSpawner;
     [SerializeField] Turret turret;
+    [SerializeField] ScheduleManager scheduleManager;
 
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject clearCanvas;
 
     bool IsGameOver => ground.Life == 0;
-    bool IsClear => meteorSpawner.GetProgress() == 1;
+    bool IsClear => scheduleManager.IsLastDayEnd;
     bool isGameEnd = false;
 
     public int Score { get; private set; }
@@ -49,6 +50,6 @@ public class GameManager : MonoBehaviour
         gameOverCanvas.SetActive(false);
         clearCanvas.SetActive(false);
         ground.Init();
-        meteorSpawner.Init();
+        scheduleManager.Init();
     }
 }

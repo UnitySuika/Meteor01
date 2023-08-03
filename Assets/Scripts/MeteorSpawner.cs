@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour
 {
-    [SerializeField] Meteor meteorPrefab;
     [SerializeField] float meteorSpawnY = 44f;
     [SerializeField] float meteorSpawnInterval;
     [SerializeField] int meteorSpawnCount;
-
+    [SerializeField] Meteor meteorPrefab;
+    [SerializeField] ScheduleManager scheduleManager;
     [SerializeField] Ground ground;
+
     int meteorSpawnCounter;
     int meteorBrokenCounter;
 
@@ -41,7 +42,7 @@ public class MeteorSpawner : MonoBehaviour
     private void Update()
     {
         meteorSpawnTimer += Time.deltaTime;
-        if (meteorSpawnTimer > meteorSpawnInterval && meteorSpawnCounter < meteorSpawnCount)
+        if (meteorSpawnTimer > meteorSpawnInterval && !scheduleManager.IsLastDayEnd)
         {
             meteorSpawnTimer = 0;
             SpawnMeteor();
