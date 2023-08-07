@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,13 +9,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] MeteorSpawner meteorSpawner;
     [SerializeField] Turret turret;
     [SerializeField] ScheduleManager scheduleManager;
+    [SerializeField] Shop shop;
 
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject clearCanvas;
 
-    bool IsGameOver => ground.Life == 0;
-    bool IsClear => scheduleManager.IsLastDayEnd;
-    bool isGameEnd = false;
+    public bool IsGameOver => ground.Life == 0;
+    public bool IsClear => scheduleManager.IsLastDayEnd;
+    public bool isGameEnd { get; private set; } = false;
 
     public int Score { get; private set; }
     public int Money { get; private set; }
@@ -24,6 +26,11 @@ public class GameManager : MonoBehaviour
         Score = 0;
         turret.HitMeteor += (meteor) => Score += meteor.Score;
         turret.HitMeteor += (meteor) => Money += meteor.Price;
+
+        scheduleManager.DayStart += () =>
+        {
+            meteorSpawner.Init();
+        };
     }
 
     private void Update()
@@ -51,5 +58,39 @@ public class GameManager : MonoBehaviour
         clearCanvas.SetActive(false);
         ground.Init();
         scheduleManager.Init();
+    }
+
+    public void OnShopButton()
+    {
+        shop.Open();
+        PauseGame();
+        shop.OnClose += () => ResumeGame();
+    }
+
+    public void BreakAllMeteor()
+    {
+        foreach (Meteor meteor in meteorSpawner.CurrentMeteors)
+        {
+            meteor.Break();
+        }
+    }
+
+    public void UseMoney(int value)
+    {
+        Money -= value;
+    }
+
+    void PauseGame()
+    {
+        meteorSpawner.Pause();
+        turret.Pause();
+        scheduleManager.Pause();
+    }
+
+    void ResumeGame()
+    {
+        meteorSpawner.Resume();
+        turret.Resume();
+        scheduleManager.Resume();
     }
 }

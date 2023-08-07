@@ -18,8 +18,12 @@ public class Meteor : MonoBehaviour
 
     Action broken;
 
+    ScheduleManager scheduleManager;
+
     public int Score => 10;
     public int Price => 5;
+
+    bool isPause = false;
 
     private void Start()
     {
@@ -28,14 +32,23 @@ public class Meteor : MonoBehaviour
         dirVector = (destination - startPos).normalized;
     }
 
-    public void Init(Ground ground, Action broken)
+    public void Init(Ground ground, Action broken, ScheduleManager scheduleManager)
     {
         this.ground = ground;
         this.broken = broken;
+        this.scheduleManager = scheduleManager;
     }
 
     private void Update()
     {
+        if (isPause) return;
+
+        if (scheduleManager.state != ScheduleManager.State.Middle)
+        {
+            Break();
+            return;
+        }
+
         currentTime += Time.deltaTime;
         Vector3 v = dirVector * (initialSpeed + acceleration * currentTime);
         transform.position = startPos + v * currentTime;
@@ -50,5 +63,15 @@ public class Meteor : MonoBehaviour
     {
         broken();
         Destroy(gameObject);
+    }
+
+    public void Pause()
+    {
+        isPause = true;
+    }
+
+    public void Resume()
+    {
+        isPause = false;
     }
 }

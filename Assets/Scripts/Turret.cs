@@ -15,11 +15,15 @@ public class Turret : MonoBehaviour
     [SerializeField] TurretInputByDrag turretInputPC;
     [SerializeField] TurretInputByButtonAndSlider turretInputIPhone;
 
+    [SerializeField] GameManager gameManager;
+
     TurretInput turretInput;
 
     const float beamLength = 100f;
 
     public Action<Meteor> HitMeteor;
+
+    bool isPause = false;
 
     private void Start()
     {
@@ -44,6 +48,7 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.isGameEnd || isPause) return;
         gun.transform.eulerAngles = new Vector3(0, 0, turretInput.GetAngle());
 
         float r = Mathf.Deg2Rad * (gun.transform.eulerAngles.z + 90f);
@@ -53,21 +58,22 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        // •ûŒüƒxƒNƒgƒ‹‚ðŒvŽZ
-        float rot = Mathf.Deg2Rad * (gun.transform.eulerAngles.z + 90f); // + 90f ‚Í•â³
+        if (gameManager.isGameEnd || isPause) return;
+        // æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨ˆç®—
+        float rot = Mathf.Deg2Rad * (gun.transform.eulerAngles.z + 90f); // + 90f ã¯è£œæ­£
         Vector3 dir = new Vector3(Mathf.Cos(rot), Mathf.Sin(rot), 0);
 
         Vector3 gunTip = gun.transform.Find("TipPoint").position;
         Vector3 target = gunTip + dir * beamLength;
 
-        // ƒr[ƒ€¶¬
+        // ãƒ“ãƒ¼ãƒ ç”Ÿæˆ
         GameObject beam = Instantiate(beamPrefab);
         beam.transform.position = (target + gunTip) / 2f;
         beam.transform.eulerAngles = gun.transform.eulerAngles;
         beam.transform.localScale = new Vector3(beamMaxThick, beamLength, 0);
 
 
-        // ƒr[ƒ€‚É“–‚½‚Á‚½è¦Î‚ðÁ‚·
+        // ãƒ“ãƒ¼ãƒ ã«å½“ãŸã£ãŸéš•çŸ³ã‚’æ¶ˆã™
         RaycastHit2D[] hits = Physics2D.BoxCastAll(beam.transform.position, beam.transform.localScale, beam.transform.eulerAngles.z, Vector2.zero);
         if (hits.Length > 0)
         {
@@ -105,5 +111,15 @@ public class Turret : MonoBehaviour
         }
 
         Destroy(beam.gameObject);
+    }
+
+    public void Pause()
+    {
+        isPause = true;
+    }
+
+    public void Resume()
+    {
+        isPause = false;
     }
 }

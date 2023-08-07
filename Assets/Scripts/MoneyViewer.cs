@@ -10,6 +10,6 @@ public class MoneyViewer : MonoBehaviour
 
     private void Update()
     {
-        moneyText.text = $"{gameManager.Money} C";
+        moneyText.text = gameManager.Money.ToString();
     }
 }
