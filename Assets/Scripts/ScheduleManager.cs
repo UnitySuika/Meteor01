@@ -93,14 +93,24 @@ public class ScheduleManager : MonoBehaviour
     IEnumerator Curtain()
     {
         curtain.gameObject.SetActive(true);
+
         float timer = 0f;
-        while (timer < curtainFadeInTime)
+        if (curtainFadeInTime == 0)
         {
-            timer += Time.deltaTime;
             Color color = curtain.color;
-            color.a = Mathf.Lerp(0, 1, timer / curtainFadeInTime);
+            color.a = 1;
             curtain.color = color;
-            yield return null;
+        }
+        else
+        {
+            while (timer < curtainFadeInTime)
+            {
+                timer += Time.deltaTime;
+                Color color = curtain.color;
+                color.a = Mathf.Lerp(0, 1, timer / curtainFadeInTime);
+                curtain.color = color;
+                yield return null;
+            }
         }
 
         curtainDayText = curtain.transform.GetChild(0).GetComponent<TextMeshProUGUI>();

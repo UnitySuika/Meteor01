@@ -93,7 +93,6 @@ public class ShopViewer : MonoBehaviour
         checkPanel.gameObject.SetActive(true);
         checkPanel.Init(item, item =>
         {
-            Debug.Log("ha>");
             shop.Buy(item);
         }, () =>
         {

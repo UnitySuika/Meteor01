@@ -1965,7 +1965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayTime: 10
   maxDay: 15
-  curtainFadeInTime: 0.5
+  curtainFadeInTime: 0
   curtainMiddleTime: 1
   curtainFadeOutTime: 0.5
   curtain: {fileID: 2135606366}

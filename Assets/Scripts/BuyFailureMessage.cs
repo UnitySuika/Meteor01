@@ -8,4 +8,9 @@ public class BuyFailureMessage : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnDisable()
+    {
+        Destroy(gameObject);
+    }
 }
