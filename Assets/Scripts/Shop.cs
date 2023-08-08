@@ -8,6 +8,10 @@ public class Shop : MonoBehaviour
     [SerializeField] float supplyInterval = 5f;
     [SerializeField] ScheduleManager scheduleManager;
     [SerializeField] GameManager gameManager;
+    [SerializeField] MeteorSpawner meteorSpawner;
+    [SerializeField] Turret turret;
+    [SerializeField] ItemManager itemManager;
+
     public Action OnOpen;
     public Action OnClose;
     public Action<ShopItem> OnBuy;
@@ -31,7 +35,9 @@ public class Shop : MonoBehaviour
             if (supplyTime > supplyInterval)
             {
                 supplyTime = 0;
-                ShopItems.Add(GetRandomItem());
+                ShopItem item = GetRandomItem();
+                item.Init(meteorSpawner, turret);
+                ShopItems.Add(item);
             }
         }
     }
@@ -43,6 +49,7 @@ public class Shop : MonoBehaviour
     public void Close()
     {
         OnClose();
+        itemManager.UseAllItems();
     }
 
     ShopItem GetRandomItem()
@@ -79,6 +86,7 @@ public class Shop : MonoBehaviour
         if (item.Price <= gameManager.Money)
         {
             gameManager.UseMoney(item.Price);
+            itemManager.AddItem(item);
             ShopItems.Remove(item);
             OnBuy(item);
         }

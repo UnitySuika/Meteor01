@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Score = 0;
-        turret.HitMeteor += (meteor) => Score += meteor.Score;
-        turret.HitMeteor += (meteor) => Money += meteor.Price;
+        turret.BreakMeteor += (meteor) => Score += meteor.Score;
+        turret.BreakMeteor += (meteor) => Money += meteor.Reward;
 
         scheduleManager.DayStart += () =>
         {
@@ -65,14 +65,6 @@ public class GameManager : MonoBehaviour
         shop.Open();
         PauseGame();
         shop.OnClose += () => ResumeGame();
-    }
-
-    public void BreakAllMeteor()
-    {
-        foreach (Meteor meteor in meteorSpawner.CurrentMeteors)
-        {
-            meteor.Break();
-        }
     }
 
     public void UseMoney(int value)

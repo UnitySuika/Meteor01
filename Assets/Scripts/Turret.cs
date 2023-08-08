@@ -21,9 +21,11 @@ public class Turret : MonoBehaviour
 
     const float beamLength = 100f;
 
-    public Action<Meteor> HitMeteor;
+    public Action<Meteor> BreakMeteor;
 
     bool isPause = false;
+
+    int attack = 1;
 
     private void Start()
     {
@@ -81,8 +83,10 @@ public class Turret : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.TryGetComponent(out Meteor meteor))
                 {
-                    HitMeteor(meteor);
-                    meteor.Break();
+                    if (meteor.Damage(attack))
+                    {
+                        BreakMeteor(meteor);
+                    }
                 }
             }
         }
@@ -121,5 +125,10 @@ public class Turret : MonoBehaviour
     public void Resume()
     {
         isPause = false;
+    }
+
+    public void AddAttack(int value)
+    {
+        attack += value;
     }
 }

@@ -99,8 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteorTargetY: -33
-  initialSpeed: 20
-  acceleration: 1
 --- !u!58 &8586974112723425627
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField] float meteorSpawnY = 44f;
     [SerializeField] float meteorSpawnInterval;
     [SerializeField] int meteorSpawnCount;
+    [SerializeField] MeteorData[] meteorDatas;
     [SerializeField] Meteor meteorPrefab;
     [SerializeField] ScheduleManager scheduleManager;
     [SerializeField] Ground ground;
@@ -63,7 +64,8 @@ public class MeteorSpawner : MonoBehaviour
 
         Vector2 spawnPos = new Vector2(Random.Range(-23.5f, 23.5f), meteorSpawnY);
         Meteor meteor = Instantiate(meteorPrefab, spawnPos, Quaternion.identity);
-        meteor.Init(ground, () => 
+        MeteorData data = meteorDatas[Random.Range(0, meteorDatas.Length)];
+        meteor.Init(data, ground, () => 
             { 
                 meteorBrokenCounter++;
                 CurrentMeteors.Remove(meteor);
@@ -87,6 +89,15 @@ public class MeteorSpawner : MonoBehaviour
         foreach (Meteor meteor in CurrentMeteors)
         {
             meteor.Resume();
+        }
+    }
+
+    public void BreakAllMeteors()
+    {
+        List<Meteor> meteors = new List<Meteor>(CurrentMeteors);
+        foreach (Meteor meteor in meteors)
+        {
+            meteor.Break();
         }
     }
 }

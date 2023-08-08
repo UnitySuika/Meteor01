@@ -6,8 +6,18 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     [SerializeField] float meteorTargetY = -39f;
-    [SerializeField] float initialSpeed;
-    [SerializeField] float acceleration = 1f;
+
+    public int Score => 10;
+    public int Reward { get; private set; }
+
+    public int Hp { get; private set; }
+
+    int atk;
+
+    float initialSpeed;
+    float acceleration;
+
+    MeteorData data;
 
     Vector3 startPos;
     Vector3 dirVector;
@@ -20,23 +30,37 @@ public class Meteor : MonoBehaviour
 
     ScheduleManager scheduleManager;
 
-    public int Score => 10;
-    public int Price => 5;
+    int maxHp = 2;
 
     bool isPause = false;
+
+    SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         startPos = transform.position;
         Vector3 destination = new Vector2(UnityEngine.Random.Range(-23.5f, 23.5f), meteorTargetY);
         dirVector = (destination - startPos).normalized;
+        Hp = maxHp;
     }
 
-    public void Init(Ground ground, Action broken, ScheduleManager scheduleManager)
+    public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager)
     {
+        this.data = data;
         this.ground = ground;
         this.broken = broken;
         this.scheduleManager = scheduleManager;
+
+        // データの各項目の反映
+
+        maxHp = data.Hp;
+        initialSpeed = data.InitialSpeed;
+        acceleration = data.Acceleration;
+        atk = data.Atk;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = data.Sprite;
+        transform.localScale = Vector3.one * data.Scale;
+        Reward = data.Reward;
     }
 
     private void Update()
@@ -57,6 +81,22 @@ public class Meteor : MonoBehaviour
             ground.Damage(1);
             Break();
         }
+    }
+
+    public bool Damage(int value)
+    {
+        Hp = Mathf.Max(0, Hp - value);
+        Debug.Log($"{Hp}/{maxHp}");
+        if (Hp <= maxHp / 2f)
+        {
+            Debug.Log("赤く");
+            spriteRenderer.color = new Color(1, 0.5f, 0.5f);
+        }
+        if (Hp == 0)
+        {
+            Break();
+        }
+        return Hp == 0;
     }
 
     public void Break()
