@@ -17,6 +17,13 @@ public class Turret : MonoBehaviour
 
     [SerializeField] GameManager gameManager;
 
+    public enum BeamMode
+    {
+        Normal,
+        Double,
+        Triple
+    }
+
     TurretInput turretInput;
 
     const float beamLength = 100f;
@@ -27,10 +34,14 @@ public class Turret : MonoBehaviour
 
     int attack = 1;
 
+    BeamMode beamMode;
+
     private void Start()
     {
         turretInputPC = GetComponent<TurretInputByDrag>();
         turretInputIPhone = GetComponent<TurretInputByButtonAndSlider>();
+
+        beamMode = BeamMode.Normal;
 
 #if UNITY_EDITOR
         SetInput(turretInputPC);
@@ -46,6 +57,11 @@ public class Turret : MonoBehaviour
         turretInput = input;
         turretInput.Shoot += Shoot;
         turretInput.Init();
+    }
+
+    public void SetBeamMode(BeamMode mode)
+    {
+        beamMode = mode;
     }
 
     private void Update()

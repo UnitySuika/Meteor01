@@ -41,11 +41,13 @@ public class GameManager : MonoBehaviour
             {
                 isGameEnd = true;
                 gameOverCanvas.SetActive(true);
+                PauseGame();
             }
             else if (IsClear)
             {
                 isGameEnd = true;
                 clearCanvas.SetActive(true);
+                PauseGame();
             }
         }
     }

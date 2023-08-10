@@ -5,12 +5,12 @@ using UnityEngine;
 public class MeteorSpawner : MonoBehaviour
 {
     [SerializeField] float meteorSpawnY = 44f;
-    [SerializeField] float meteorSpawnInterval;
     [SerializeField] int meteorSpawnCount;
-    [SerializeField] MeteorData[] meteorDatas;
     [SerializeField] Meteor meteorPrefab;
     [SerializeField] ScheduleManager scheduleManager;
     [SerializeField] Ground ground;
+
+    float meteorSpawnInterval;
 
     public List<Meteor> CurrentMeteors { get; private set; } = new List<Meteor>();
 
@@ -43,7 +43,10 @@ public class MeteorSpawner : MonoBehaviour
         canMeteorSpawn = true;
         meteorSpawnTimer = 0;
         meteorSpawnCounter = 0;
-        meteorBrokenCounter = 0;
+        meteorBrokenCounter = 0; 
+        meteorSpawnInterval = Random.Range(
+            scheduleManager.CurrentDayData.SpawnIntervalMin,
+            scheduleManager.CurrentDayData.SpawnIntervalMax);
     }
 
     private void Update()
@@ -54,6 +57,9 @@ public class MeteorSpawner : MonoBehaviour
         if (meteorSpawnTimer > meteorSpawnInterval && scheduleManager.state == ScheduleManager.State.Middle)
         {
             meteorSpawnTimer = 0;
+            meteorSpawnInterval = Random.Range(
+                scheduleManager.CurrentDayData.SpawnIntervalMin,
+                scheduleManager.CurrentDayData.SpawnIntervalMax);
             SpawnMeteor();
         }
     }
@@ -64,6 +70,7 @@ public class MeteorSpawner : MonoBehaviour
 
         Vector2 spawnPos = new Vector2(Random.Range(-23.5f, 23.5f), meteorSpawnY);
         Meteor meteor = Instantiate(meteorPrefab, spawnPos, Quaternion.identity);
+        MeteorData[] meteorDatas = scheduleManager.CurrentDayData.Meteors;
         MeteorData data = meteorDatas[Random.Range(0, meteorDatas.Length)];
         meteor.Init(data, ground, () => 
             { 

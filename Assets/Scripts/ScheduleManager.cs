@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using TMPro;
+using Cysharp.Threading.Tasks;
 
 public class ScheduleManager : MonoBehaviour
 {
@@ -15,8 +16,13 @@ public class ScheduleManager : MonoBehaviour
     [SerializeField] float curtainFadeOutTime;
     [SerializeField] Image curtain;
 
+    [SerializeField] DayData[] dayDatas;
+
     [SerializeField] GameManager gameManager;
-    
+    [SerializeField] DayItemViewer dayItemViewer;
+
+    public DayData CurrentDayData => dayDatas[Day - 1];
+
     TextMeshProUGUI curtainDayText;
 
     public int Day { get; private set; }
@@ -116,7 +122,9 @@ public class ScheduleManager : MonoBehaviour
         curtainDayText = curtain.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         curtainDayText.gameObject.SetActive(true);
         curtainDayText.text = Day.ToString() + "日目";
-        yield return new WaitForSeconds(curtainMiddleTime);
+        dayItemViewer.ShowItems();
+        yield return dayItemViewer.WaitItemButtonClick().ToCoroutine();
+        dayItemViewer.HideItems();
         curtainDayText.gameObject.SetActive(false);
 
         timer = 0f;

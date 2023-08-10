@@ -22,7 +22,6 @@ public class Shop : MonoBehaviour
     ShopItem[] shopItemCandidates = new ShopItem[]
     {
         new Bomb(),
-        new AttackUp()
     };
 
     float supplyTime;

@@ -78,7 +78,7 @@ public class Meteor : MonoBehaviour
         transform.position = startPos + v * currentTime;
         if (transform.position.y < meteorTargetY)
         {
-            ground.Damage(1);
+            ground.Damage(atk);
             Break();
         }
     }
@@ -86,12 +86,8 @@ public class Meteor : MonoBehaviour
     public bool Damage(int value)
     {
         Hp = Mathf.Max(0, Hp - value);
-        Debug.Log($"{Hp}/{maxHp}");
-        if (Hp <= maxHp / 2f)
-        {
-            Debug.Log("赤く");
-            spriteRenderer.color = new Color(1, 0.5f, 0.5f);
-        }
+        float redDepth = 1f - (float)Hp / maxHp;
+        spriteRenderer.color = new Color(1, 1 - redDepth, 1 - redDepth);
         if (Hp == 0)
         {
             Break();

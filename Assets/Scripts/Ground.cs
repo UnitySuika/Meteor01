@@ -21,4 +21,9 @@ public class Ground : MonoBehaviour
     {
         Life = Mathf.Max(Life - damage, 0);
     }
+
+    public void Cure(int value)
+    {
+        Life = Mathf.Min(Life + value, maxLife);
+    }
 }

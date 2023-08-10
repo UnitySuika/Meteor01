@@ -26,7 +26,7 @@ public abstract class ShopItem
 public class Bomb : ShopItem, IDisposable
 {
     public override string Name => "ボム";
-    public override int Price => 10;
+    public override int Price => 100;
     public override string Description => "画面上の隕石を一掃する。";
     public override int EntryDay => 1;
     public override int Weight => 10;
