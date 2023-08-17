@@ -703,8 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f599f648e1bbc84e9847028143d0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 30
-  maxDay: 5
+  dayTime: 58.5
+  maxDay: 10
   curtainFadeInTime: 0
   curtainMiddleTime: 1
   curtainFadeOutTime: 0.5
@@ -712,11 +712,11 @@ MonoBehaviour:
   dayDatas:
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.5
+      Proportion: 0.9
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.5
-    _SpawnIntervalMin: 0.9
-    _SpawnIntervalMax: 1.1
+      Proportion: 0.1
+    _SpawnIntervalMin: 0.25
+    _SpawnIntervalMax: 0.25
   - _Meteors:
     - MeteorData: {fileID: 0}
       Proportion: 0
@@ -726,10 +726,10 @@ MonoBehaviour:
     _SpawnIntervalMax: 5
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.8
+      Proportion: 0.5
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.2
-    _SpawnIntervalMin: 0.8
+      Proportion: 0.5
+    _SpawnIntervalMin: 0.5
     _SpawnIntervalMax: 1
   - _Meteors:
     - MeteorData: {fileID: 0}
@@ -738,6 +738,41 @@ MonoBehaviour:
       Proportion: 0
     _SpawnIntervalMin: 0.3
     _SpawnIntervalMax: 0.5
+  - _Meteors:
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    _SpawnIntervalMin: 0.1
+    _SpawnIntervalMax: 0.2
+  - _Meteors:
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    _SpawnIntervalMin: 0.1
+    _SpawnIntervalMax: 0.2
+  - _Meteors:
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    _SpawnIntervalMin: 0.1
+    _SpawnIntervalMax: 0.2
+  - _Meteors:
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    _SpawnIntervalMin: 0.1
+    _SpawnIntervalMax: 0.2
+  - _Meteors:
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    - MeteorData: {fileID: 0}
+      Proportion: 0
+    _SpawnIntervalMin: 0.1
+    _SpawnIntervalMax: 0.2
   - _Meteors:
     - MeteorData: {fileID: 0}
       Proportion: 0

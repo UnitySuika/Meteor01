@@ -29,6 +29,8 @@ public class Meteor : MonoBehaviour
     Action broken;
 
     ScheduleManager scheduleManager;
+    
+    MeteorSpawner meteorSpawner;
 
     int maxHp = 2;
 
@@ -44,12 +46,13 @@ public class Meteor : MonoBehaviour
         Hp = maxHp;
     }
 
-    public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager)
+    public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager, MeteorSpawner meteorSpawner)
     {
         this.data = data;
         this.ground = ground;
         this.broken = broken;
         this.scheduleManager = scheduleManager;
+        this.meteorSpawner = meteorSpawner;
 
         // データの各項目の反映
 
@@ -69,7 +72,7 @@ public class Meteor : MonoBehaviour
 
         if (scheduleManager.state != ScheduleManager.State.Middle)
         {
-            Break();
+            Break(false);
             return;
         }
 
@@ -79,7 +82,7 @@ public class Meteor : MonoBehaviour
         if (transform.position.y < meteorTargetY)
         {
             ground.Damage(atk);
-            Break();
+            Break(false);
         }
     }
 
@@ -90,14 +93,25 @@ public class Meteor : MonoBehaviour
         spriteRenderer.color = new Color(1, 1 - redDepth, 1 - redDepth);
         if (Hp == 0)
         {
-            Break();
+            Break(true);
         }
         return Hp == 0;
     }
 
-    public void Break()
+    public void Break(bool isAttacked)
     {
         broken();
+        if (isAttacked)
+        {
+            if (data.Effect == MeteorData.EffectType.Cure)
+            {
+                ground.Cure(1);
+            }
+            else if (data.Effect == MeteorData.EffectType.Bomb)
+            {
+                meteorSpawner.BreakAllMeteors();
+            }
+        }
         Destroy(gameObject);
     }
 

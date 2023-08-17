@@ -15,6 +15,14 @@ public class MeteorData : ScriptableObject
     [SerializeField] Sprite _Sprite;
     [SerializeField] float _Scale;
     [SerializeField] int _Reward;
+    [SerializeField] EffectType _Effect;
+
+    public enum EffectType
+    {
+        None,
+        Cure,
+        Bomb
+    }
 
     public string Name => _Name;
     public string Description => _Description;
@@ -26,4 +34,5 @@ public class MeteorData : ScriptableObject
     public Sprite Sprite => _Sprite;
     public float Scale => _Scale;
     public int Reward => _Reward;
+    public EffectType Effect => _Effect;
 }

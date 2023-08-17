@@ -70,13 +70,26 @@ public class MeteorSpawner : MonoBehaviour
 
         Vector2 spawnPos = new Vector2(Random.Range(-23.5f, 23.5f), meteorSpawnY);
         Meteor meteor = Instantiate(meteorPrefab, spawnPos, Quaternion.identity);
-        MeteorData[] meteorDatas = scheduleManager.CurrentDayData.Meteors;
-        MeteorData data = meteorDatas[Random.Range(0, meteorDatas.Length)];
+
+        MeteorData data = null;
+        DayData.MeteorDataAndProportion[] meteors = scheduleManager.CurrentDayData.Meteors;
+        float r = Random.value;
+        float sum = 0;
+        foreach (var m in meteors)
+        {
+            sum += m.Proportion;
+            if (r <= sum)
+            {
+                data = m.MeteorData;
+                break;
+            }
+        }
+
         meteor.Init(data, ground, () => 
             { 
                 meteorBrokenCounter++;
                 CurrentMeteors.Remove(meteor);
-            }, scheduleManager);
+            }, scheduleManager, this);
 
         CurrentMeteors.Add(meteor);
     }
@@ -104,7 +117,7 @@ public class MeteorSpawner : MonoBehaviour
         List<Meteor> meteors = new List<Meteor>(CurrentMeteors);
         foreach (Meteor meteor in meteors)
         {
-            meteor.Break();
+            meteor.Break(true);
         }
     }
 }

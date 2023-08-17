@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         clearCanvas.SetActive(false);
         ground.Init();
         scheduleManager.Init();
+        ResumeGame();
     }
 
     public void OnShopButton()

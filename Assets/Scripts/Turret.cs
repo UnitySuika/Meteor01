@@ -77,8 +77,29 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         if (gameManager.isGameEnd || isPause) return;
+        float rot = gun.transform.eulerAngles.z + 90f; // + 90f は補正
         // 方向ベクトルを計算
-        float rot = Mathf.Deg2Rad * (gun.transform.eulerAngles.z + 90f); // + 90f は補正
+        if (beamMode == BeamMode.Normal)
+        {
+            ShootBeam(rot);
+        }
+        else if (beamMode == BeamMode.Double)
+        {
+            ShootBeam(rot + 10);
+            ShootBeam(rot - 10);
+        }
+        else if (beamMode == BeamMode.Triple)
+        {
+            ShootBeam(rot + 10);
+            ShootBeam(rot);
+            ShootBeam(rot - 10);
+        }
+    }
+
+    void ShootBeam(float r)
+    {
+        float rot = Mathf.Deg2Rad * r;
+
         Vector3 dir = new Vector3(Mathf.Cos(rot), Mathf.Sin(rot), 0);
 
         Vector3 gunTip = gun.transform.Find("TipPoint").position;
@@ -87,7 +108,7 @@ public class Turret : MonoBehaviour
         // ビーム生成
         GameObject beam = Instantiate(beamPrefab);
         beam.transform.position = (target + gunTip) / 2f;
-        beam.transform.eulerAngles = gun.transform.eulerAngles;
+        beam.transform.eulerAngles = new Vector3(0, 0, r - 90); // -90は補正
         beam.transform.localScale = new Vector3(beamMaxThick, beamLength, 0);
 
 

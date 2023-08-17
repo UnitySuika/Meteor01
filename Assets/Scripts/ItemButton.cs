@@ -15,24 +15,24 @@ public class ItemButton : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() => buttonClicked(item));
     }
 
-    async UniTask SetImage(Item item)
+    async UniTask<Item> SetImage(Item item)
     {
-        Debug.Log("あ");
+        GetComponent<Image>().enabled = false;
         AsyncOperationHandle<Sprite> handle = Addressables.LoadAssetAsync<Sprite>(item.ImagePath);
         await handle.Task;
-        Debug.Log("は");
 
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
-            Debug.Log("い");
             Sprite sprite = handle.Result;
             Debug.Log(sprite.name);
+            GetComponent<Image>().enabled = true;
             GetComponent<Image>().sprite = sprite;
+            return item;
         }
         else
         {
-            Debug.Log("う");
             Debug.Log("Spriteのロードに失敗");
+            return null;
         }
     }
 }

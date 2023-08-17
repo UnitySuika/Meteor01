@@ -20,6 +20,7 @@ public class ScheduleManager : MonoBehaviour
 
     [SerializeField] GameManager gameManager;
     [SerializeField] DayItemViewer dayItemViewer;
+    [SerializeField] DayItemManager dayItemManager;
 
     public DayData CurrentDayData => dayDatas[Day - 1];
 
@@ -72,7 +73,7 @@ public class ScheduleManager : MonoBehaviour
             if (isStateStart)
             {
                 isStateStart = false;
-                StartCoroutine(Curtain());
+                Curtain().Forget();
             }
         }
         else
@@ -96,7 +97,7 @@ public class ScheduleManager : MonoBehaviour
         }
     }
 
-    IEnumerator Curtain()
+    async UniTask Curtain()
     {
         curtain.gameObject.SetActive(true);
 
@@ -115,16 +116,16 @@ public class ScheduleManager : MonoBehaviour
                 Color color = curtain.color;
                 color.a = Mathf.Lerp(0, 1, timer / curtainFadeInTime);
                 curtain.color = color;
-                yield return null;
+                await UniTask.Yield();
             }
         }
 
         curtainDayText = curtain.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         curtainDayText.gameObject.SetActive(true);
         curtainDayText.text = Day.ToString() + "日目";
-        dayItemViewer.ShowItems();
-        yield return dayItemViewer.WaitItemButtonClick().ToCoroutine();
-        dayItemViewer.HideItems();
+
+        await UniTask.Delay(TimeSpan.FromSeconds(curtainMiddleTime));
+
         curtainDayText.gameObject.SetActive(false);
 
         timer = 0f;
@@ -134,7 +135,7 @@ public class ScheduleManager : MonoBehaviour
             Color color = curtain.color;
             color.a = Mathf.Lerp(1, 0, timer / curtainFadeOutTime);
             curtain.color = color;
-            yield return null;
+            await UniTask.Yield();
         }
         curtain.gameObject.SetActive(false);
 
