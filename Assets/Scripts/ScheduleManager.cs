@@ -16,6 +16,8 @@ public class ScheduleManager : MonoBehaviour
     [SerializeField] float curtainFadeOutTime;
     [SerializeField] Image curtain;
 
+    [SerializeField] float daySpeedUpRatio = 1.2f;
+
     [SerializeField] DayData[] dayDatas;
 
     [SerializeField] GameManager gameManager;
@@ -46,6 +48,11 @@ public class ScheduleManager : MonoBehaviour
 
     public State state { get; private set; }
     bool isStateStart;
+
+    public float GetCurrentSpeedUpRatio()
+    {
+        return Mathf.Pow(daySpeedUpRatio, Day - 1);
+    }
 
     void SetState(State state)
     {

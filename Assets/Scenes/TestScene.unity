@@ -709,6 +709,7 @@ MonoBehaviour:
   curtainMiddleTime: 1
   curtainFadeOutTime: 0.5
   curtain: {fileID: 2135606366}
+  daySpeedUpRatio: 1.2
   dayDatas:
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
@@ -716,18 +717,14 @@ MonoBehaviour:
     _SpawnIntervalMin: 1
     _SpawnIntervalMax: 1
   - _Meteors:
-    - MeteorData: {fileID: 0}
-      Proportion: 0
-    - MeteorData: {fileID: 0}
-      Proportion: 0
-    _SpawnIntervalMin: 3
-    _SpawnIntervalMax: 5
+    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
+      Proportion: 1
+    _SpawnIntervalMin: 1
+    _SpawnIntervalMax: 1
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.5
-    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.5
-    _SpawnIntervalMin: 0.5
+      Proportion: 1
+    _SpawnIntervalMin: 1
     _SpawnIntervalMax: 1
   - _Meteors:
     - MeteorData: {fileID: 0}

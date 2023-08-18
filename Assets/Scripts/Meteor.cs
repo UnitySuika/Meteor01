@@ -57,7 +57,7 @@ public class Meteor : MonoBehaviour
         // データの各項目の反映
 
         maxHp = data.Hp;
-        initialSpeed = data.InitialSpeed;
+        initialSpeed = data.InitialSpeed * scheduleManager.GetCurrentSpeedUpRatio();
         acceleration = data.Acceleration;
         atk = data.Atk;
         spriteRenderer = GetComponent<SpriteRenderer>();
