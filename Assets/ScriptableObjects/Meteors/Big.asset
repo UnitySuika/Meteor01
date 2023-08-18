@@ -15,10 +15,11 @@ MonoBehaviour:
   _Name: "\u5927\u304D\u306A\u9695\u77F3"
   _Description: "\u666E\u901A\u306E\u9695\u77F3\u3088\u308A\u4E00\u56DE\u308A\u5927\u304D\u3044\u3002"
   _Hp: 2
-  _InitialSpeed: 10
+  _InitialSpeed: 25
   _Acceleration: 0
   _Level: 1
   _Atk: 2
   _Sprite: {fileID: 21300000, guid: 6e83c93e00a58484da7d8365a9447195, type: 3}
-  _Scale: 2
+  _Scale: 1.5
   _Reward: 6
+  _Effect: 0

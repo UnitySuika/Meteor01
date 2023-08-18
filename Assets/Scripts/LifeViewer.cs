@@ -12,17 +12,13 @@ public class LifeViewer : MonoBehaviour
 
     private void Update()
     {
-        if (ground.Life < currentLife)
+        if (ground.Life != currentLife)
         {
-            for (int i = 0; i < currentLife - ground.Life; i++)
+            foreach (Transform t in heartsRoot)
             {
-                Destroy(heartsRoot.GetChild(heartsRoot.childCount - 1).gameObject);
+                Destroy(t.gameObject);
             }
-            currentLife = ground.Life;
-        }
-        if (ground.Life > currentLife)
-        {
-            for (int i = 0; i < ground.Life - currentLife; i++)
+            for (int i = 0; i < ground.Life; i++)
             {
                 Instantiate(heartPrefab, heartsRoot);
             }
