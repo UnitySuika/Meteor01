@@ -713,7 +713,9 @@ MonoBehaviour:
   dayDatas:
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 1
+      Proportion: 0.5
+    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
+      Proportion: 0.5
     _SpawnIntervalMin: 1
     _SpawnIntervalMax: 1
   - _Meteors:
@@ -7239,7 +7241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -433, y: 706}
+  m_AnchoredPosition: {x: 448, y: 710}
   m_SizeDelta: {x: 130, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1267408903

@@ -21,7 +21,8 @@ public class MeteorData : ScriptableObject
     {
         None,
         Cure,
-        Bomb
+        Bomb,
+        Turn
     }
 
     public string Name => _Name;

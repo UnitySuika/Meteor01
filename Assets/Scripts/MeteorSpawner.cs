@@ -22,6 +22,9 @@ public class MeteorSpawner : MonoBehaviour
     bool canMeteorSpawn;
     bool isPause = false;
 
+    const float spawnPosMin = -23.5f;
+    const float spawnPosMax = 23.5f;
+
     public float GetProgress()
     {
         return Mathf.Min(meteorBrokenCounter / meteorSpawnCount, 1);
@@ -68,8 +71,7 @@ public class MeteorSpawner : MonoBehaviour
     {
         meteorSpawnCounter++;
 
-        Vector2 spawnPos = new Vector2(Random.Range(-23.5f, 23.5f), meteorSpawnY);
-        Meteor meteor = Instantiate(meteorPrefab, spawnPos, Quaternion.identity);
+        Meteor meteor = Instantiate(meteorPrefab);
 
         MeteorData data = null;
         DayData.MeteorDataAndProportion[] meteors = scheduleManager.CurrentDayData.Meteors;
@@ -89,7 +91,7 @@ public class MeteorSpawner : MonoBehaviour
             { 
                 meteorBrokenCounter++;
                 CurrentMeteors.Remove(meteor);
-            }, scheduleManager, this);
+            }, scheduleManager, spawnPosMin, spawnPosMax, meteorSpawnY, this);
 
         CurrentMeteors.Add(meteor);
     }

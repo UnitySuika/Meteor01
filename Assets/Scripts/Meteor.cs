@@ -38,21 +38,26 @@ public class Meteor : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    float spawnPosMin;
+    float spawnPosMax;
+
+    const float amplitude = 10f;
+    const float period = 1f;
+    const float waveLength = 3f;
+
     private void Start()
     {
-        startPos = transform.position;
-        Vector3 destination = new Vector2(UnityEngine.Random.Range(-23.5f, 23.5f), meteorTargetY);
-        dirVector = (destination - startPos).normalized;
-        Hp = maxHp;
     }
 
-    public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager, MeteorSpawner meteorSpawner)
+    public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager, float spawnPosMin, float spawnPosMax, float meteorSpawnY, MeteorSpawner meteorSpawner)
     {
         this.data = data;
         this.ground = ground;
         this.broken = broken;
         this.scheduleManager = scheduleManager;
         this.meteorSpawner = meteorSpawner;
+        this.spawnPosMin = spawnPosMin;
+        this.spawnPosMax = spawnPosMax;
 
         // データの各項目の反映
 
@@ -64,6 +69,27 @@ public class Meteor : MonoBehaviour
         spriteRenderer.sprite = data.Sprite;
         transform.localScale = Vector3.one * data.Scale;
         Reward = data.Reward;
+
+        Hp = maxHp;
+
+        if (data.Effect == MeteorData.EffectType.Turn)
+        {
+            float dif = amplitude + transform.localScale.x * 7f / 2f;
+            Vector2 spawnPos = new Vector2(UnityEngine.Random.Range(spawnPosMin + dif, spawnPosMax - dif), meteorSpawnY);
+            transform.position = spawnPos;
+            startPos = spawnPos;
+
+            dirVector = Vector3.down;
+        }
+        else
+        {
+            Vector2 spawnPos = new Vector2(UnityEngine.Random.Range(spawnPosMin, spawnPosMax), meteorSpawnY);            
+            transform.position = spawnPos;
+            startPos = spawnPos;
+
+            Vector3 destination = new Vector2(UnityEngine.Random.Range(-23.5f, 23.5f), meteorTargetY);
+            dirVector = (destination - startPos).normalized;
+        }
     }
 
     private void Update()
@@ -77,12 +103,29 @@ public class Meteor : MonoBehaviour
         }
 
         currentTime += Time.deltaTime;
-        Vector3 v = dirVector * (initialSpeed + acceleration * currentTime);
-        transform.position = startPos + v * currentTime;
-        if (transform.position.y < meteorTargetY)
+
+        if (data.Effect == MeteorData.EffectType.Turn)
         {
-            ground.Damage(atk);
-            Break(false);
+            Vector3 v = dirVector * (initialSpeed + acceleration * currentTime);
+            float y = startPos.y - transform.position.y;
+            float x = amplitude * Mathf.Sin(2 * Mathf.PI * (currentTime / period));
+
+            transform.position = startPos + Vector3.right * x + v * currentTime;
+            if (transform.position.y < meteorTargetY)
+            {
+                ground.Damage(atk);
+                Break(false);
+            }
+        }
+        else
+        {
+            Vector3 v = dirVector * (initialSpeed + acceleration * currentTime);
+            transform.position = startPos + v * currentTime;
+            if (transform.position.y < meteorTargetY)
+            {
+                ground.Damage(atk);
+                Break(false);
+            }
         }
     }
 
