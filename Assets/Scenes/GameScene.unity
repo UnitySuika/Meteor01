@@ -703,13 +703,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f599f648e1bbc84e9847028143d0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 30
+  dayTime: 15
   maxDay: 10
   curtainFadeInTime: 0
   curtainMiddleTime: 1.5
   curtainFadeOutTime: 0.5
   curtain: {fileID: 2135606366}
-  daySpeedUpRatio: 1.15
+  daySpeedUpRatio: 1.1
   dayDatas:
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
