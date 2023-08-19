@@ -703,13 +703,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f599f648e1bbc84e9847028143d0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 58
+  dayTime: 30
   maxDay: 10
   curtainFadeInTime: 0
   curtainMiddleTime: 1.5
   curtainFadeOutTime: 0.5
   curtain: {fileID: 2135606366}
-  daySpeedUpRatio: 1.2
+  daySpeedUpRatio: 1.15
   dayDatas:
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
@@ -764,10 +764,8 @@ MonoBehaviour:
       Proportion: 0.3
     - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
       Proportion: 0.4
-    - MeteorData: {fileID: 11400000, guid: e8abb93b7ffd8f44fbe1faff116c9b56, type: 2}
-      Proportion: 0.1
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.2
+      Proportion: 0.3
     _SpawnIntervalMin: 0.6
     _SpawnIntervalMax: 0.9
   - _Meteors:
@@ -787,22 +785,18 @@ MonoBehaviour:
     - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
       Proportion: 0.3
     - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
-      Proportion: 0.1
-    - MeteorData: {fileID: 11400000, guid: e8abb93b7ffd8f44fbe1faff116c9b56, type: 2}
-      Proportion: 0.1
-    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
       Proportion: 0.2
+    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
+      Proportion: 0.1
     _SpawnIntervalMin: 0.5
     _SpawnIntervalMax: 0.7
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.2
+      Proportion: 0.3
     - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
       Proportion: 0.3
     - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
       Proportion: 0.3
-    - MeteorData: {fileID: 11400000, guid: e8abb93b7ffd8f44fbe1faff116c9b56, type: 2}
-      Proportion: 0.1
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
       Proportion: 0.1
     _SpawnIntervalMin: 0.3

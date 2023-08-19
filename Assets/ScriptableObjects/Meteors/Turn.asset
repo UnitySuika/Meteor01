@@ -15,7 +15,7 @@ MonoBehaviour:
   _Name: "\u30BF\u30FC\u30F3\u9695\u77F3"
   _Description: "\u4E2D\u5FC3\u306B\u5411\u304B\u3063\u3066\u9032\u884C\u65B9\u5411\u3092\u66F2\u3052\u308B"
   _Hp: 1
-  _InitialSpeed: 40
+  _InitialSpeed: 30
   _Acceleration: 0
   _Level: 1
   _Atk: 1
