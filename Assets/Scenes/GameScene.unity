@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f599f648e1bbc84e9847028143d0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 15
+  dayTime: 25
   maxDay: 10
   curtainFadeInTime: 0
   curtainMiddleTime: 1.5
@@ -499,80 +499,81 @@ MonoBehaviour:
     _SpawnIntervalMax: 1.4
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
-      Proportion: 0.6
+      Proportion: 0.8
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.4
+      Proportion: 0.2
     _SpawnIntervalMin: 1
     _SpawnIntervalMax: 1.2
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
       Proportion: 0.4
     - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
-      Proportion: 0.3
+      Proportion: 0.45
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.3
+      Proportion: 0.15
     _SpawnIntervalMin: 0.9
     _SpawnIntervalMax: 1.1
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
       Proportion: 0.4
     - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
-      Proportion: 0.4
-    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.2
-    _SpawnIntervalMin: 0.7
-    _SpawnIntervalMax: 1
-  - _Meteors:
-    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.3
-    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
-      Proportion: 0.4
-    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.3
-    _SpawnIntervalMin: 0.7
-    _SpawnIntervalMax: 1
-  - _Meteors:
-    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.3
-    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
-      Proportion: 0.4
-    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.3
-    _SpawnIntervalMin: 0.6
-    _SpawnIntervalMax: 0.9
-  - _Meteors:
-    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.3
-    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
-      Proportion: 0.3
-    - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
-      Proportion: 0.2
-    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.2
-    _SpawnIntervalMin: 0.6
-    _SpawnIntervalMax: 0.9
-  - _Meteors:
-    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.3
-    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
-      Proportion: 0.3
-    - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
-      Proportion: 0.2
+      Proportion: 0.5
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
       Proportion: 0.1
+    _SpawnIntervalMin: 0.7
+    _SpawnIntervalMax: 1
+  - _Meteors:
+    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
+      Proportion: 0.3
+    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
+      Proportion: 0.55
+    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
+      Proportion: 0.15
+    _SpawnIntervalMin: 0.7
+    _SpawnIntervalMax: 1
+  - _Meteors:
+    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
+      Proportion: 0.3
+    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
+      Proportion: 0.6
+    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
+      Proportion: 0.1
+    _SpawnIntervalMin: 0.6
+    _SpawnIntervalMax: 0.9
+  - _Meteors:
+    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
+      Proportion: 0.35
+    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
+      Proportion: 0.3
+    - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
+      Proportion: 0.3
+    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
+      Proportion: 0.05
+    _SpawnIntervalMin: 0.6
+    _SpawnIntervalMax: 0.9
+  - _Meteors:
+    - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
+      Proportion: 0.3
+    - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
+      Proportion: 0.35
+    - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
+      Proportion: 0.3
+    - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
+      Proportion: 0.05
     _SpawnIntervalMin: 0.5
     _SpawnIntervalMax: 0.7
   - _Meteors:
     - MeteorData: {fileID: 11400000, guid: 020c39f72c6e57f488eb096f8a60e1de, type: 2}
-      Proportion: 0.3
+      Proportion: 0.325
     - MeteorData: {fileID: 11400000, guid: af5ffd7ba2364e3479b77fc0f0c53f70, type: 2}
-      Proportion: 0.3
+      Proportion: 0.325
     - MeteorData: {fileID: 11400000, guid: 08269ddb2a93d3340a7108c6828315d5, type: 2}
-      Proportion: 0.3
+      Proportion: 0.325
     - MeteorData: {fileID: 11400000, guid: 6d37a391b447e2649ab669558520c0f3, type: 2}
-      Proportion: 0.1
+      Proportion: 0.025
     _SpawnIntervalMin: 0.3
     _SpawnIntervalMax: 0.5
+  startDay: 9
   gameManager: {fileID: 724955518}
   dayItemViewer: {fileID: 1058560742}
   dayItemManager: {fileID: 0}
@@ -6176,7 +6177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb893042aa70c1944a3ec2bfd208b7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorSpawnY: 44
+  meteorSpawnY: 50
   meteorSpawnCount: 10
   meteorPrefab: {fileID: 3192372577377717424, guid: c273fb7c7a3ce7d498bd5bdc375cf23d, type: 3}
   scheduleManager: {fileID: 212084507}
@@ -6617,7 +6618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -38, y: -1115}
+  m_AnchoredPosition: {x: -38, y: -1087}
   m_SizeDelta: {x: 210.20001, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1141172812
@@ -6890,6 +6891,7 @@ MonoBehaviour:
   beamPrefab: {fileID: 4959193384588900539, guid: 7e898420e03d7b7428353b43f298934f, type: 3}
   beamMaxThick: 3
   beamFadeTime: 0.2
+  inputType: 0
   gameManager: {fileID: 724955518}
 --- !u!4 &1241526295
 Transform:
@@ -7341,8 +7343,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 223795003}
-  - {fileID: 1828133387}
   - {fileID: 2094791413}
+  - {fileID: 1828133387}
   - {fileID: 2099329525}
   - {fileID: 1174909480}
   - {fileID: 991481880}
@@ -7523,9 +7525,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1383105131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 956.4, y: -2521.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 332.74, y: -1087}
   m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1525257441
@@ -7583,7 +7585,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8107,7 +8109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -38, y: -1023.5}
+  m_AnchoredPosition: {x: -38, y: -997}
   m_SizeDelta: {x: 100.5, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1710546221
@@ -8532,7 +8534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 213.92, y: -1048.5}
+  m_AnchoredPosition: {x: 213.92, y: -1027}
   m_SizeDelta: {x: 327.84, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099329526

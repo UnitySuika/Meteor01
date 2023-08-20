@@ -12,6 +12,8 @@ public class Turret : MonoBehaviour
     [SerializeField] float beamMaxThick;
     [SerializeField] float beamFadeTime;
 
+    [SerializeField] InputType inputType;
+
     TurretInputByDrag turretInputPC;
     TurretInputByButtonAndSlider turretInputIPhone;
 
@@ -22,6 +24,13 @@ public class Turret : MonoBehaviour
         Normal,
         Double,
         Triple
+    }
+
+    public enum InputType
+    {
+        Auto,
+        PC,
+        IOS
     }
 
     TurretInput turretInput;
@@ -43,13 +52,26 @@ public class Turret : MonoBehaviour
 
         beamMode = BeamMode.Normal;
 
+        if (inputType == InputType.Auto)
+        {
 #if UNITY_EDITOR
-        SetInput(turretInputPC);
-        turretInputIPhone.enabled = false;
+            SetInput(turretInputPC);
+            turretInputIPhone.enabled = false;
 #elif UNITY_IOS
-        SetInput(turretInputIPhone);
-        turretInputPC.enabled = false;
+            SetInput(turretInputIPhone);
+            turretInputPC.enabled = false;
 #endif
+        }
+        else if (inputType == InputType.PC)
+        {
+            SetInput(turretInputPC);
+            turretInputIPhone.enabled = false;
+        }
+        else
+        {
+            SetInput(turretInputIPhone);
+            turretInputPC.enabled = false;
+        }
     }
 
     void SetInput(TurretInput input)

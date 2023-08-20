@@ -20,6 +20,9 @@ public class ScheduleManager : MonoBehaviour
 
     [SerializeField] DayData[] dayDatas;
 
+    [SerializeField, Header("テスト用")] int startDay = 1;
+    [Space(10)]
+
     [SerializeField] GameManager gameManager;
     [SerializeField] DayItemViewer dayItemViewer;
     [SerializeField] DayItemManager dayItemManager;
@@ -68,7 +71,7 @@ public class ScheduleManager : MonoBehaviour
     public void Init()
     {
         IsLastDayEnd = false;
-        Day = 1;
+        Day = startDay;
         currentTime = 0;
         SetState(State.Curtain);
     }
