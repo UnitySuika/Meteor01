@@ -12,8 +12,8 @@ public class Turret : MonoBehaviour
     [SerializeField] float beamMaxThick;
     [SerializeField] float beamFadeTime;
 
-    [SerializeField] TurretInputByDrag turretInputPC;
-    [SerializeField] TurretInputByButtonAndSlider turretInputIPhone;
+    TurretInputByDrag turretInputPC;
+    TurretInputByButtonAndSlider turretInputIPhone;
 
     [SerializeField] GameManager gameManager;
 

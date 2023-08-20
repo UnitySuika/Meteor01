@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] MeteorSpawner meteorSpawner;
     [SerializeField] Turret turret;
     [SerializeField] ScheduleManager scheduleManager;
-    [SerializeField] Shop shop;
 
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject clearCanvas;
@@ -19,13 +18,11 @@ public class GameManager : MonoBehaviour
     public bool isGameEnd { get; private set; } = false;
 
     public int Score { get; private set; }
-    public int Money { get; private set; }
 
     private void Start()
     {
         Score = 0;
         turret.BreakMeteor += (meteor) => Score += meteor.Score;
-        turret.BreakMeteor += (meteor) => Money += meteor.Reward;
 
         scheduleManager.DayStart += () =>
         {
@@ -61,18 +58,6 @@ public class GameManager : MonoBehaviour
         ground.Init();
         scheduleManager.Init();
         ResumeGame();
-    }
-
-    public void OnShopButton()
-    {
-        shop.Open();
-        PauseGame();
-        shop.OnClose += () => ResumeGame();
-    }
-
-    public void UseMoney(int value)
-    {
-        Money -= value;
     }
 
     void PauseGame()

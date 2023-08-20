@@ -10,6 +10,6 @@ public class ScoreViewer : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = $"S {gameManager.Score}";
+        scoreText.text = $"{gameManager.Score}";
     }
 }
