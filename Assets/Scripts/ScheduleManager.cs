@@ -24,8 +24,6 @@ public class ScheduleManager : MonoBehaviour
     [Space(10)]
 
     [SerializeField] GameManager gameManager;
-    [SerializeField] DayItemViewer dayItemViewer;
-    [SerializeField] DayItemManager dayItemManager;
 
     public DayData CurrentDayData => dayDatas[Day - 1];
 

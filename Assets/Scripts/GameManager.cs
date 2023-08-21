@@ -1,6 +1,8 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -58,6 +60,11 @@ public class GameManager : MonoBehaviour
         ground.Init();
         scheduleManager.Init();
         ResumeGame();
+    }
+
+    public void ToTitle()
+    {
+        FadeManager.Instance.FadeAndLoad(0.5f, "TitleScene", 0.5f).Forget();
     }
 
     void PauseGame()
