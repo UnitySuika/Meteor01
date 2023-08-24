@@ -8,6 +8,7 @@ using Cysharp.Threading.Tasks;
 
 public class ScheduleManager : MonoBehaviour
 {
+    public float DayTime => dayTime;
     [SerializeField] float dayTime;
     [SerializeField] int maxDay;
 
@@ -49,6 +50,66 @@ public class ScheduleManager : MonoBehaviour
 
     public State state { get; private set; }
     bool isStateStart;
+
+    [System.Serializable]
+    public class TimeData
+    {
+        public int Day;
+        public int Hour;
+        public int Min;
+    }
+
+    public TimeData GetTime()
+    {
+        TimeData data = new TimeData();
+        data.Day = Day;
+        data.Hour = Mathf.FloorToInt(currentTime / dayTime * 24f);
+        float hourTime = dayTime / 24f;
+        float minuteTime = hourTime / 60f;
+        data.Min = Mathf.FloorToInt((currentTime % hourTime) / minuteTime);
+        return data;
+    }
+
+    public float GetCurrentSumTime()
+    {
+        return currentTime;
+    }
+
+    public TimeData GetLongerTime(TimeData a, TimeData b)
+    {
+        float sumMin_a = a.Day * 24f * 60f + a.Hour * 60f + a.Min;
+        float sumMin_b = b.Day * 24f * 60f + b.Hour * 60f + b.Min;
+        if (sumMin_a > sumMin_b)
+        {
+            return a;
+        }
+        else if (sumMin_a < sumMin_b)
+        {
+            return b;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public TimeData GetShorterTime(TimeData a, TimeData b)
+    {
+        float sumMin_a = a.Day * 24f * 60f + a.Hour * 60f + a.Min;
+        float sumMin_b = b.Day * 24f * 60f + b.Hour * 60f + b.Min;
+        if (sumMin_a > sumMin_b)
+        {
+            return b;
+        }
+        else if (sumMin_a < sumMin_b)
+        {
+            return a;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
     public float GetCurrentSpeedUpRatio()
     {

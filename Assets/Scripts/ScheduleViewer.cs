@@ -10,6 +10,6 @@ public class ScheduleViewer : MonoBehaviour
 
     private void Update()
     {
-        dayText.text = scheduleManager.Day.ToString() + "日目";
+        dayText.text = scheduleManager.Day.ToString();
     }
 }

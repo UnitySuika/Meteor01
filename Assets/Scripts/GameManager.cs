@@ -11,9 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] MeteorSpawner meteorSpawner;
     [SerializeField] Turret turret;
     [SerializeField] ScheduleManager scheduleManager;
+    [SerializeField] DataManager dataManager;
 
-    [SerializeField] GameObject gameOverCanvas;
-    [SerializeField] GameObject clearCanvas;
+    [SerializeField] GameOverWindow gameOverWindow;
+    [SerializeField] ClearWindow clearWindow;
 
     public bool IsGameOver => ground.Life == 0;
     public bool IsClear => scheduleManager.IsLastDayEnd;
@@ -39,13 +40,26 @@ public class GameManager : MonoBehaviour
             if (IsGameOver)
             {
                 isGameEnd = true;
-                gameOverCanvas.SetActive(true);
+                if (Score > dataManager.data.HighScore)
+                {
+                    dataManager.data.HighScore = Score;
+                }
+                ScheduleManager.TimeData timeData = scheduleManager.GetTime();
+                if (scheduleManager.GetLongerTime(timeData, dataManager.data.HighTime)
+                    == timeData)
+                {
+                    dataManager.data.HighTime = timeData;
+                }
+                dataManager.Save();
+                gameOverWindow.gameObject.SetActive(true);
+                gameOverWindow.Init();
                 PauseGame();
             }
             else if (IsClear)
             {
                 isGameEnd = true;
-                clearCanvas.SetActive(true);
+                clearWindow.gameObject.SetActive(true);
+                clearWindow.Init();
                 PauseGame();
             }
         }
@@ -55,8 +69,8 @@ public class GameManager : MonoBehaviour
     {
         isGameEnd = false;
         Score = 0;
-        gameOverCanvas.SetActive(false);
-        clearCanvas.SetActive(false);
+        gameOverWindow.gameObject.SetActive(false);
+        clearWindow.gameObject.SetActive(false);
         ground.Init();
         scheduleManager.Init();
         ResumeGame();
