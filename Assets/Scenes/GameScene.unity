@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f599f648e1bbc84e9847028143d0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 50
+  dayTime: 25
   maxDay: 10
   curtainFadeInTime: 0
   curtainMiddleTime: 1.5
@@ -798,7 +798,7 @@ MonoBehaviour:
       Proportion: 0.025
     _SpawnIntervalMin: 0.3
     _SpawnIntervalMax: 0.5
-  startDay: 3
+  startDay: 1
   gameManager: {fileID: 724955518}
 --- !u!4 &212084508
 Transform:
@@ -3285,8 +3285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0611c20e4ed8b50438e0c3fe6ace6b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  highScoreText: {fileID: 0}
+  scoreText: {fileID: 107642197}
+  highScoreText: {fileID: 967164671}
+  gameManager: {fileID: 724955518}
+  dataManager: {fileID: 789639619}
 --- !u!1 &1166990694
 GameObject:
   m_ObjectHideFlags: 0

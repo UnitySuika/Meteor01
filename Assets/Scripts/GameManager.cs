@@ -58,6 +58,16 @@ public class GameManager : MonoBehaviour
             else if (IsClear)
             {
                 isGameEnd = true;
+                if (Score > dataManager.data.HighScore)
+                {
+                    dataManager.data.HighScore = Score;
+                }
+                ScheduleManager.TimeData timeData = scheduleManager.GetTime();
+                if (scheduleManager.GetLongerTime(timeData, dataManager.data.HighTime)
+                    == timeData)
+                {
+                    dataManager.data.HighTime = timeData;
+                }
                 clearWindow.gameObject.SetActive(true);
                 clearWindow.Init();
                 PauseGame();
