@@ -12,6 +12,11 @@ public class TitleSceneManager : MonoBehaviour
     [SerializeField] Image fadeImage;
     [SerializeField] GameObject tapText;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     private void Update()
     {
         bool isTouch = false;
