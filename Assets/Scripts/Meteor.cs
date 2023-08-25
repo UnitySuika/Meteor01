@@ -6,6 +6,7 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     [SerializeField] float meteorTargetY = -39f;
+    [SerializeField] float bonusY = -5f;
 
     public int Score => 10;
     public int Reward { get; private set; }
@@ -32,6 +33,8 @@ public class Meteor : MonoBehaviour
     
     MeteorSpawner meteorSpawner;
 
+    GameManager gameManager;
+
     int maxHp = 2;
 
     bool isPause = false;
@@ -49,13 +52,14 @@ public class Meteor : MonoBehaviour
     {
     }
 
-    public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager, float spawnPosMin, float spawnPosMax, float meteorSpawnY, MeteorSpawner meteorSpawner)
+    public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager, float spawnPosMin, float spawnPosMax, float meteorSpawnY, MeteorSpawner meteorSpawner, GameManager gameManager)
     {
         this.data = data;
         this.ground = ground;
         this.broken = broken;
         this.scheduleManager = scheduleManager;
         this.meteorSpawner = meteorSpawner;
+        this.gameManager = gameManager;
         this.spawnPosMin = spawnPosMin;
         this.spawnPosMax = spawnPosMax;
 
@@ -146,6 +150,15 @@ public class Meteor : MonoBehaviour
         broken();
         if (isAttacked)
         {
+            if (transform.position.y < bonusY)
+            {
+                gameManager.AddScore(20);
+            }
+            else
+            {
+                gameManager.AddScore(10);
+            }
+
             if (data.Effect == MeteorData.EffectType.Cure)
             {
                 ground.Cure(1);

@@ -22,10 +22,15 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; private set; }
 
+    public void AddScore(int value)
+    {
+        Score += value;
+    }
+
     private void Start()
     {
         Score = 0;
-        turret.BreakMeteor += (meteor) => Score += meteor.Score;
+        //turret.BreakMeteor += (meteor) => Score += meteor.Score;
 
         scheduleManager.DayStart += () =>
         {

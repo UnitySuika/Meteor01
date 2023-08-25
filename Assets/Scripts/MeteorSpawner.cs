@@ -8,6 +8,7 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField] int meteorSpawnCount;
     [SerializeField] Meteor meteorPrefab;
     [SerializeField] ScheduleManager scheduleManager;
+    [SerializeField] GameManager gameManager;
     [SerializeField] Ground ground;
 
     float meteorSpawnInterval;
@@ -91,7 +92,7 @@ public class MeteorSpawner : MonoBehaviour
             { 
                 meteorBrokenCounter++;
                 CurrentMeteors.Remove(meteor);
-            }, scheduleManager, spawnPosMin, spawnPosMax, meteorSpawnY, this);
+            }, scheduleManager, spawnPosMin, spawnPosMax, meteorSpawnY, this, gameManager);
 
         CurrentMeteors.Add(meteor);
     }

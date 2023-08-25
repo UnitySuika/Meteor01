@@ -142,10 +142,7 @@ public class Turret : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.TryGetComponent(out Meteor meteor))
                 {
-                    if (meteor.Damage(attack))
-                    {
-                        BreakMeteor(meteor);
-                    }
+                    meteor.Damage(attack);
                 }
             }
         }
