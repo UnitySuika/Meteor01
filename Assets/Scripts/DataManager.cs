@@ -12,7 +12,14 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        filepath = Application.dataPath + "/" + fileName;
+        if (Application.isEditor)
+        {
+            filepath = Application.dataPath + "/" + fileName;
+        }
+        else
+        {
+            filepath = Application.persistentDataPath + "/" + fileName;
+        }
 
         if (!File.Exists(filepath))
         {
