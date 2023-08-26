@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public bool isGameEnd { get; private set; } = false;
 
     public int Score { get; private set; }
+    public bool HighScoreUpdated = false;
+    public bool HighTimeUpdated = false;
 
     public void AddScore(int value)
     {
@@ -48,12 +50,14 @@ public class GameManager : MonoBehaviour
                 if (Score > dataManager.data.HighScore)
                 {
                     dataManager.data.HighScore = Score;
+                    HighScoreUpdated = true;
                 }
                 ScheduleManager.TimeData timeData = scheduleManager.GetTime();
                 if (scheduleManager.GetLongerTime(timeData, dataManager.data.HighTime)
                     == timeData)
                 {
                     dataManager.data.HighTime = timeData;
+                    HighTimeUpdated = true;
                 }
                 dataManager.Save();
                 gameOverWindow.gameObject.SetActive(true);
@@ -66,12 +70,14 @@ public class GameManager : MonoBehaviour
                 if (Score > dataManager.data.HighScore)
                 {
                     dataManager.data.HighScore = Score;
+                    HighScoreUpdated = true;
                 }
                 ScheduleManager.TimeData timeData = scheduleManager.GetTime();
                 if (scheduleManager.GetLongerTime(timeData, dataManager.data.HighTime)
                     == timeData)
                 {
                     dataManager.data.HighTime = timeData;
+                    HighTimeUpdated = true;
                 }
                 clearWindow.gameObject.SetActive(true);
                 clearWindow.Init();
@@ -84,6 +90,8 @@ public class GameManager : MonoBehaviour
     {
         isGameEnd = false;
         Score = 0;
+        HighScoreUpdated = false;
+        HighTimeUpdated = false;
         gameOverWindow.gameObject.SetActive(false);
         clearWindow.gameObject.SetActive(false);
         ground.Init();

@@ -7,8 +7,10 @@ public class GameOverWindow : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] TextMeshProUGUI newScoreText;
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] TextMeshProUGUI highTimeText;
+    [SerializeField] TextMeshProUGUI newTimeText;
     [SerializeField] ScheduleManager scheduleManager;
     [SerializeField] GameManager gameManager;
     [SerializeField] DataManager dataManager;
@@ -25,6 +27,9 @@ public class GameOverWindow : MonoBehaviour
         scoreText.text = gameManager.Score.ToString();
 
         dataManager.Load();
+
+        newScoreText.gameObject.SetActive(gameManager.HighScoreUpdated);
+        newTimeText.gameObject.SetActive(gameManager.HighTimeUpdated);
 
         if (dataManager.data.HighScore == 0)
         {

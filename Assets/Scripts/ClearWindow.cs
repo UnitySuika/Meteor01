@@ -7,6 +7,7 @@ public class ClearWindow : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] TextMeshProUGUI newScoreText;
     [SerializeField] GameManager gameManager;
     [SerializeField] DataManager dataManager;
 
@@ -15,6 +16,8 @@ public class ClearWindow : MonoBehaviour
         scoreText.text = gameManager.Score.ToString();
 
         dataManager.Load();
+
+        newScoreText.gameObject.SetActive(gameManager.HighScoreUpdated);
 
         if (dataManager.data.HighScore == 0)
         {
