@@ -178,6 +178,7 @@ public class Meteor : MonoBehaviour
             }
         }
         isBroken = true;
+        spriteRenderer.color = new Color(1, 1, 1);
         animator.SetTrigger("Break");
     }
 
