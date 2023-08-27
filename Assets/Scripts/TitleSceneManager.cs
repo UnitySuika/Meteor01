@@ -14,6 +14,7 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        // フレームレートを60に
         Application.targetFrameRate = 60;
     }
 

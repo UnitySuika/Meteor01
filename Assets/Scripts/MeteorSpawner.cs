@@ -23,8 +23,8 @@ public class MeteorSpawner : MonoBehaviour
     bool canMeteorSpawn;
     bool isPause = false;
 
-    const float spawnPosMin = -23.5f;
-    const float spawnPosMax = 23.5f;
+    const float spawnPosMin = -18.6f;
+    const float spawnPosMax = 18.6f;
 
     public float GetProgress()
     {

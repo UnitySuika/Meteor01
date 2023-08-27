@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,8 +25,14 @@ public class GameManager : MonoBehaviour
     public bool HighScoreUpdated = false;
     public bool HighTimeUpdated = false;
 
+    public Action<int> bonusAdded;
+
     public void AddScore(int value)
     {
+        if (value > 10 && bonusAdded != null)
+        {
+            bonusAdded(value - 10);
+        }
         Score += value;
     }
 

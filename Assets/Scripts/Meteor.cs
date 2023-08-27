@@ -8,6 +8,9 @@ public class Meteor : MonoBehaviour
     [SerializeField] float meteorTargetY = -39f;
     [SerializeField] float bonusY = -5f;
 
+    [SerializeField] RuntimeAnimatorController meteorAnimator;
+    [SerializeField] RuntimeAnimatorController heartAnimator;
+
     public int Score => 10;
     public int Reward { get; private set; }
 
@@ -48,12 +51,14 @@ public class Meteor : MonoBehaviour
     const float period = 1f;
     const float waveLength = 3f;
 
-    private void Start()
-    {
-    }
+    bool isBroken = false;
+
+    Animator animator;
 
     public void Init(MeteorData data, Ground ground, Action broken, ScheduleManager scheduleManager, float spawnPosMin, float spawnPosMax, float meteorSpawnY, MeteorSpawner meteorSpawner, GameManager gameManager)
     {
+        animator = GetComponent<Animator>();
+
         this.data = data;
         this.ground = ground;
         this.broken = broken;
@@ -73,6 +78,8 @@ public class Meteor : MonoBehaviour
         spriteRenderer.sprite = data.Sprite;
         transform.localScale = Vector3.one * data.Scale;
         Reward = data.Reward;
+
+        animator.runtimeAnimatorController = data.Name == "ハート隕石" ? heartAnimator : meteorAnimator;
 
         Hp = maxHp;
 
@@ -98,7 +105,7 @@ public class Meteor : MonoBehaviour
 
     private void Update()
     {
-        if (isPause) return;
+        if (isPause || isBroken) return;
 
         if (scheduleManager.state != ScheduleManager.State.Middle)
         {
@@ -168,7 +175,8 @@ public class Meteor : MonoBehaviour
                 meteorSpawner.BreakAllMeteors();
             }
         }
-        Destroy(gameObject);
+        isBroken = true;
+        animator.SetTrigger("Break");
     }
 
     public void Pause()
@@ -179,5 +187,10 @@ public class Meteor : MonoBehaviour
     public void Resume()
     {
         isPause = false;
+    }
+
+    public void AnimationOver()
+    {
+        Destroy(gameObject);
     }
 }
