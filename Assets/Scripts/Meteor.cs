@@ -154,6 +154,8 @@ public class Meteor : MonoBehaviour
 
     public void Break(bool isAttacked)
     {
+        if (isBroken) return;
+
         broken();
         if (isAttacked)
         {
