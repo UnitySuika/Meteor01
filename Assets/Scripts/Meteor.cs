@@ -142,6 +142,8 @@ public class Meteor : MonoBehaviour
 
     public bool Damage(int value)
     {
+        if (isBroken) return true;
+
         Hp = Mathf.Max(0, Hp - value);
         float redDepth = 1f - (float)Hp / maxHp;
         spriteRenderer.color = new Color(1, 1 - redDepth, 1 - redDepth);
