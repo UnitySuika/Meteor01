@@ -54,4 +54,15 @@ public class GameOverWindow : MonoBehaviour
             highTimeText.text = highTime;
         }
     }
+
+    public void OnRetryButton()
+    {
+        AudioManager.Instance.PlaySE("System2");
+        gameManager.Retry();
+    }
+    public void OnToTitleButton()
+    {
+        AudioManager.Instance.PlaySE("System2");
+        gameManager.ToTitle();
+    }
 }

@@ -125,6 +125,7 @@ public class Meteor : MonoBehaviour
             if (transform.position.y < meteorTargetY)
             {
                 ground.Damage(atk);
+                AudioManager.Instance.PlaySE("MeteorBreak");
                 Break(false);
             }
         }
@@ -135,6 +136,7 @@ public class Meteor : MonoBehaviour
             if (transform.position.y < meteorTargetY)
             {
                 ground.Damage(atk);
+                AudioManager.Instance.PlaySE("MeteorBreak");
                 Break(false);
             }
         }
@@ -178,6 +180,8 @@ public class Meteor : MonoBehaviour
             {
                 meteorSpawner.BreakAllMeteors();
             }
+
+            AudioManager.Instance.PlaySE("MeteorBreak2", isOverride: true);
         }
         isBroken = true;
         spriteRenderer.color = new Color(1, 1, 1);

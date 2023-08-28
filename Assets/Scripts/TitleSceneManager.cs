@@ -37,6 +37,7 @@ public class TitleSceneManager : MonoBehaviour
         }
         if (isTouch)
         {
+            AudioManager.Instance.PlaySE("System1");
             FadeManager.Instance.FadeAndLoad(fadeOutTime, "GameScene", 0f).Forget();
         }
     }

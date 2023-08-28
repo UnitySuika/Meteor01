@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,21 +10,21 @@ public class BonusSign : MonoBehaviour
 
     float currentTime = 0f;
     float initialTransparency;
-    Image image;
+    TextMeshProUGUI text;
 
     private void Start()
     {
-        image = GetComponent<Image>();
-        initialTransparency = image.color.a;
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        initialTransparency = text.color.a;
     }
 
     private void Update()
     {
         currentTime += Time.deltaTime;
 
-        Color color = image.color;
+        Color color = text.color;
         color.a = Mathf.Lerp(initialTransparency, 0, currentTime / fadeTime);
-        image.color = color;
+        text.color = color;
 
         if (color.a <= 0f)
         {
