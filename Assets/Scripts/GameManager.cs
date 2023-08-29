@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameOverWindow gameOverWindow;
     [SerializeField] ClearWindow clearWindow;
+    [SerializeField] PauseWindow pauseWindow;
 
     public bool IsGameOver => ground.Life == 0;
     public bool IsClear => scheduleManager.IsLastDayEnd;
@@ -111,17 +112,23 @@ public class GameManager : MonoBehaviour
         FadeManager.Instance.FadeAndLoad(0.5f, "TitleScene", 0.5f).Forget();
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         meteorSpawner.Pause();
         turret.Pause();
         scheduleManager.Pause();
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         meteorSpawner.Resume();
         turret.Resume();
         scheduleManager.Resume();
+    }
+
+    public void OnPauseButton()
+    {
+        pauseWindow.gameObject.SetActive(true);
+        PauseGame();
     }
 }
