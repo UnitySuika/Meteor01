@@ -11,34 +11,22 @@ public class TitleSceneManager : MonoBehaviour
     [SerializeField] float fadeOutTime = 1f;
     [SerializeField] Image fadeImage;
     [SerializeField] GameObject tapText;
+    [SerializeField] Button startButton;
+    [SerializeField] Button tutorialButton;
+    [SerializeField] TutorialWindow tutorialWindow;
 
     private void Awake()
     {
         // フレームレートを60に
         Application.targetFrameRate = 60;
-    }
-
-    private void Update()
-    {
-        bool isTouch = false;
-        if (Application.isEditor)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                isTouch = true;
-            }
-        }
-        else
-        {
-            if (Input.touchCount > 0)
-            {
-                isTouch = true;
-            }
-        }
-        if (isTouch)
+        startButton.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlaySE("System1");
             FadeManager.Instance.FadeAndLoad(fadeOutTime, "GameScene", 0f).Forget();
-        }
+        });
+        tutorialButton.onClick.AddListener(() =>
+        {
+            tutorialWindow.gameObject.SetActive(true);
+        });
     }
 }
