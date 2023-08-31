@@ -133,6 +133,8 @@ public class Turret : MonoBehaviour
         beam.transform.eulerAngles = new Vector3(0, 0, r - 90); // -90は補正
         beam.transform.localScale = new Vector3(beamMaxThick, beamLength, 0);
 
+        AudioManager.Instance.PlaySE("Beam");
+
 
         // ビームに当たった隕石を消す
         RaycastHit2D[] hits = Physics2D.BoxCastAll(beam.transform.position, beam.transform.localScale, beam.transform.eulerAngles.z, Vector2.zero);

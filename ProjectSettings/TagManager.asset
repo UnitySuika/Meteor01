@@ -44,14 +44,23 @@ TagManager:
   - name: BackGround
     uniqueID: 1964882985
     locked: 0
+  - name: BackGround2
+    uniqueID: 12253975
+    locked: 0
+  - name: Turret
+    uniqueID: 15982527
+    locked: 0
   - name: Meteor
     uniqueID: 1611431273
     locked: 0
   - name: Beam
     uniqueID: 3152477935
     locked: 0
-  - name: Turret
-    uniqueID: 15982527
+  - name: ForeGround
+    uniqueID: 3253999005
+    locked: 0
+  - name: ForeGround2
+    uniqueID: 1846883473
     locked: 0
   - name: Canvas1
     uniqueID: 907690469
