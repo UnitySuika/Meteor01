@@ -19,7 +19,7 @@ MonoBehaviour:
   _Acceleration: 0
   _Level: 1
   _Atk: 1
-  _Sprite: {fileID: 21300000, guid: 9ec6855f6de52a44483d50b7f01ed050, type: 3}
+  _Sprite: {fileID: 21300000, guid: 912c6cf79524f4e42b2f72f9dc5e0158, type: 3}
   _Scale: 0.75
   _Reward: 3
   _Effect: 1

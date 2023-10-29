@@ -62,6 +62,9 @@ TagManager:
   - name: ForeGround2
     uniqueID: 1846883473
     locked: 0
+  - name: Turret2
+    uniqueID: 2654792581
+    locked: 0
   - name: Canvas1
     uniqueID: 907690469
     locked: 0
